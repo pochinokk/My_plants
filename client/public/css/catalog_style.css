@@ -1,0 +1,351 @@
+* {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+body {
+    overflow-x: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: white;
+}
+main{
+    padding-top: 50px;
+    display: block;
+    text-align: center;
+}
+
+
+
+.card-image{
+    position:relative;
+    display: flex;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+
+.card-image:before{
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 25px;
+    opacity: 0;
+    z-index: 2;
+    transition: all 0.4s ease;
+    content: '';
+}
+.card-image:hover:before{
+    opacity: 1;
+}
+
+
+
+.card-image > .hidden_title{
+    position: absolute;
+    left: 25px;
+    top: 80px;
+    font-size: 24px;
+    color: white;
+    overflow: hidden;
+    z-index: 3;
+}
+
+
+
+
+.card-image .hidden_title > span{
+    display: block;
+    transform: translateY(-70px);
+    transition: transform .3s ease;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+
+.grid-item__img, .card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .4s ease;
+}
+.card-image:hover .card-img{
+    transform: scale(1.05);
+
+}
+.card-image:hover .hidden_title > span
+{
+    transform: translateY(0);
+    opacity: 1;
+}
+ 
+.catalog_name{
+    margin-top: 30px;
+    font-size: 30px;
+    /* color: white; */
+    color: black;
+    /* position: relative;
+    top: -250px;
+    left: 150px; */
+    padding-right: 800px;
+    white-space: nowrap;
+}
+.catalog *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.catalog{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 35px;
+    background-color: white;
+    margin-bottom: 100px;
+}
+.wrapper{
+    box-sizing: border-box;
+    width: 1000px;
+    /* width: 100%; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+.wrapper .left-arrow, .right-arrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    background: white;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+.wrapper .left-arrow{
+    padding-right: 3px;
+}
+.wrapper .right-arrow{
+    padding-left: 3px;
+}
+.wrapper .left-arrow:first-child, .wrapper .right-arrow:first-child{
+    left: -22px;
+}
+.wrapper .left-arrow:last-child, .wrapper .right-arrow:last-child{
+    right: -22px;
+}
+
+.wrapper .carousel{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+
+
+.carousel1.no-transition1{
+    scroll-behavior: auto;
+}
+.carousel1.dragging1{
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+.carousel1.dragging1 .card{
+    cursor: grab;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+.carousel2.no-transition2{
+    scroll-behavior: auto;
+}
+.carousel2.dragging2{
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+.carousel2.dragging2 .card{
+    cursor: grab;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+
+
+.carousel3.no-transition3{
+    scroll-behavior: auto;
+}
+.carousel3.dragging3{
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+.carousel3.dragging3 .card{
+    cursor: grab;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+
+.carousel .card{
+    scroll-snap-align: start;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    height: 390px;
+    border-radius: 25px;
+    background: rgb(214, 255, 149);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 6px;
+}
+
+
+.image-content,
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding: 10px 14px;
+    margin-top: 10px;
+}
+
+.image-content{
+    position: relative;
+    row-gap: 5px;
+    border-radius: 25px;
+    padding: 10px 0;
+}
+.card-content{
+    /* height: 120px; */
+    width: 250px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(80px);
+    border-radius: 25px;
+}
+
+.card-header{
+    position: absolute;
+    left:0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.card-image{
+    position: relative;
+    height: 250px;
+    width: 250px;
+    border-radius: 25px;
+}
+
+.card-image .card-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    transition: all .4s ease;
+}
+.title{
+    text-align: left;
+}
+.name{
+    font-size: 24px;
+    color: black;
+    font-weight: 500;
+}
+.description{
+    font-size: 23px;
+    font-weight: 500;
+    color: #4a4a4a;
+    text-align: center;
+}
+
+
+
+.btn{
+    border: none;
+    font-size: 16px;
+    color: black;
+    font-size: bold;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 6px;
+    /* margin: 14px; */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.btn:hover{
+    transform: scale(1.2);
+}
+.btn:active{
+    background: grey;
+    transform: scale(0.9);
+}
+
+ @media screen and (max-width: 1175px)
+{
+    .wrapper .carousel{
+        grid-auto-columns: calc((100% / 2) - 10px);
+    }
+    .wrapper{
+        width: 800px;
+    }
+    .catalog_name{
+        padding-right: 600px;
+    }
+}
+@media screen and (max-width: 950px)
+{
+    .wrapper .carousel{
+        grid-auto-columns: 100%;
+    }
+    .wrapper{
+        width: 330px;
+    }
+    .catalog_name{
+        padding-right: 200px;
+    }
+}
+@media screen and (max-width: 420px)
+{
+    .wrapper{
+        width: 320px;
+    }
+}

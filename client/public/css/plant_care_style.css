@@ -1,0 +1,117 @@
+*{
+    font-family:"Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}  
+.tips_title{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 35px;
+    font-size: 30px;
+    padding: 0px 10px 0px 10px;
+}
+.tip_title{
+    font-weight: bold;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+.number{
+    height: 50px;
+    width: 50px;
+    background: green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    align-self: start;
+    justify-self: right;
+    margin-top: 10px;
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 10px;
+}
+.number > p{
+    padding-bottom: 5px;
+}
+.tip{
+    background: rgb(230, 255, 182);
+    border-radius: 25px;
+    padding: 20px;
+    transition: transform 0.35s ease;
+    font-size: 23px;
+}
+.tip:hover{
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    transform: scale(1.01);
+
+} 
+.tips_wrapper{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 60px 70%;
+    gap: 20px;
+    justify-content: right;
+    margin-right: 10px;
+    padding-left: 50px;
+}
+.tips_plants{
+    padding-left: 10px;
+}
+.tips_plants img{
+    border-radius: 25px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+
+}
+
+.second_plants{
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1285px){
+    .tips_plants img{
+        width: 450px;
+    }
+}
+@media screen and (max-width: 900px){
+    main{
+        display: grid;
+        grid-template-columns: 1fr;
+
+    }
+    .tips_plants{
+        margin-top: 10px;
+        text-align: center;
+    }
+    .tips_wrapper{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px){
+    main{
+        margin-left: 5px;
+        justify-content: left;
+    }
+    .tips_plants img{
+        width: 300px;
+    }
+    .tips_wrapper{
+        padding-left: 0px;
+    }
+    .tip{
+        font-size: 20px;
+    }
+    .tips_title p{
+        font-size: 20px;
+    }
+}

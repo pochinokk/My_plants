@@ -1,0 +1,81 @@
+
+
+<header>
+    <a href="/home">
+        <img class = "header_logo" src="/images/icons/logo512.png" alt="Логотип" title="Логотип" width = "64" height="64">
+    </a>
+    <label class="header_name">My plants</label>
+
+    <ul class = "header_links">
+        {{#if isIndex}}
+        <li ><a class = "current link" href="/home" >Главная</a></li>
+        {{else}}
+        <li ><a class = "link" href="/home" >Главная</a></li>
+        {{/if}}
+
+
+        {{#if isAuthentication}}
+        <li ><a class = "current link" href="/authentication" >Войти</a></li>
+        {{else}}
+        <li ><a class = "link" href="/authentication" >Войти</a></li>
+        {{/if}}
+
+        {{#if isCatalog}}
+        <li ><a class = "current link" href="/catalog">Каталог</a></li>
+        {{else}}
+        <li ><a class = "link" href="/catalog">Каталог</a></li>
+        {{/if}}
+
+        {{#if isOrderCreation}}
+        <li ><a class = "current link" href="/order_creation">Сделать заказ</a></li>
+        {{else}}
+        <li ><a class = "link" href="/order_creation">Сделать заказ</a></li>
+        {{/if}}
+
+        {{#if isAccount}}
+        <li ><a class = "current link" href="/account">Личный кабинет</a></li>
+        {{else}}
+        <li ><a class = "link" href="/account">Личный кабинет</a></li>
+        {{/if}}
+
+        {{#if isPlantCare}}
+        <li ><a class = "current link" href="/plant_care">О растениях</a></li>
+        {{else}}
+        <li ><a class = "link" href="/plant_care">О растениях</a></li>
+        {{/if}}
+
+        {{#if isAboutUs}}
+        <li ><a class = "current link" href="/about_us">О нас</a></li>
+        {{else}}
+        <li ><a class = "link" href="/about_us">О нас</a></li>
+        {{/if}}
+
+
+        <li ><a id="user_name" >{{username}}</a></li>
+
+    </ul>
+    <div class = "burger-background"></div>
+    <div class = "navbar">
+        
+            <div class = "burger-menu">
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+                <div class="line line-3"></div>
+            </div> 
+
+
+    <ul class = "nav-list">
+        <div class = "space_for_x"></div>
+        <li id="burger_user_name"><p >{{username}}</p></li>
+        <li class="nav-item"><a href="/home" class = "nav-link">Главная</a></li>
+        <li class="nav-item"><a href="/authentication" class = "nav-link">Войти</a></li>
+        <li class="nav-item"><a href="/catalog" class = "nav-link">Каталог</a></li>
+        <li class="nav-item"><a href="/order_creation" class = "nav-link">Сделать заказ</a></li>
+        <li class="nav-item"><a href="/account" class = "nav-link">Личный кабинет</a></li>
+        <li class="nav-item"><a href="/plant_care" class = "nav-link">О растениях</a></li>
+        <li class="nav-item"><a href="/about_us" class = "nav-link">О нас</a></li>
+    </ul>
+
+    </div>
+
+</header>

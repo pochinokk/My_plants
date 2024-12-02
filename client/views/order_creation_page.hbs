@@ -1,0 +1,86 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>My plants</title>
+    <link rel="icon" href="/images/icons/favicon.ico" sizes = "any">
+    <link rel="stylesheet" href="/css/order_creation_style.css">
+    <link rel="stylesheet" href="/css/header_style.css">
+    <link rel="stylesheet" href="/css/footer_style.css">
+    <script src = "/js/burger.js" defer></script>
+    <script src = "/js/counter.js" defer></script>
+</head>
+<body>
+    <div class="messages">
+        <!-- Сообщения об успехе и об ошибке -->
+        {{#if mes}}
+            <div id="server_message">
+                <p>{{mes}}</p>
+            </div>
+        {{/if}}
+        {{#if er}}
+            <div id="server_error">
+                <p>{{er}}</p>
+            </div>
+        {{/if}}
+    </div>
+    <main>
+        <div class="container">
+            <p class="bin_title">Выберите растения</p>
+            <form id="sort_form" action="/order_creation" method="get">
+                <button id="sort_btn1" type="submit" name="sort_type" value="name">По алфавиту</button>
+                <button id="sort_btn2" type="submit" name="sort_type" value="ascending">По возрастанию цены</button>
+                <button id="sort_btn3" type="submit" name="sort_type" value="descending">По убыванию цены</button>
+            </form>
+            <div class="cart">
+                <div class="products">
+                    {{#each positions}}
+                        <div class="product">
+                            <div class="img_wrapper">
+                                <img src="/images/positions/{{name}}.jpg" alt="">
+                            </div>
+                            <div class="product_info">
+                                <p class="product_name">{{name}}</p>
+                                <p class="product_price">Цена: {{price}}₽</p>
+                                <div class="counter" quantity_counter>
+                                    <div class="counter_button minus_button">
+                                        <img src="/images/icons/minus.png" alt="" width="12">
+                                    </div>
+                                    <div class="counter_input">
+                                        <input type="text" disabled value="0">
+                                    </div>
+                                    <div class="counter_button plus_button">
+                                        <img src="/images/icons/plus.png" alt="" width="12">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+
+
+                <form id="frm" class="cart_total" action="/save_order" method="post">
+                    <div class="order_sum">
+                        <div>
+                            <p class="sum_title">Итого:</p>
+                        </div>
+                        <div class="sum">
+                            <input type="text" name="amount" disabled value="0₽"> <!-- на сервер -->
+                        </div>
+                    </div>
+                    <div class="number_of_products">
+                        <div>
+                            <p class="number_title">Количество:</p>
+                        </div>
+                        <div class="number">
+                            <input type="text" disabled value="0 шт.">
+                        </div>
+                    </div>
+                    <input id="hidden_input" class="product_string" type="text" name="str" readonly> <!-- на сервер -->
+                    <button type="submit" class="order_button">Заказать</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>

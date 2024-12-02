@@ -1,0 +1,59 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>My plants</title>
+    <link rel="icon" href="/images/icons/favicon.ico" sizes = "any">
+    <link rel="stylesheet" href="/css/account_style.css">
+    <link rel="stylesheet" href="/css/header_style.css">
+    <link rel="stylesheet" href="/css/footer_style.css">
+    <script src = "/js/burger.js" defer></script>
+</head>
+<body>
+<main>
+    <div class="messages">
+        <!-- Сообщения об успехе и об ошибке -->
+        {{#if mes}}
+            <div id="server_message">
+                <p>{{mes}}</p>
+            </div>
+        {{/if}}
+        {{#if er}}
+            <div id="server_error">
+                <p>{{er}}</p>
+            </div>
+        {{/if}}
+    </div>
+    <form id="account_info" action="/logout" method="post">
+        <p>Ваш аккаунт: {{username}}</p>
+        <button id="logout_btn" type="submit">Выйти</button>
+    </form>
+
+    <p id="orders_title">Ваши заказы:</p>
+
+    {{#if orders.length}}
+        <div id="order_list">
+            {{#each orders}}
+                <div class="order">
+                    <p>
+                        <strong>ID заказа:</strong>
+                        <span>{{_id}}</span>
+                    </p>
+                    <p>
+                        <strong>Сумма заказа:</strong>
+                        <span>{{amount}}₽</span>
+                    </p>
+                    <p>
+                        <strong>Товары:</strong>
+                        <span>{{product_set}}</span>
+                    </p>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <p id="empty_title">Заказов нет</p>
+    {{/if}}
+</main>
+</body>
+

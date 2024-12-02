@@ -1,0 +1,242 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>My plants</title>
+    <link rel="icon" href="/images/icons/favicon.ico" sizes = "any">
+    <link rel="stylesheet" href="/css/admin_style.css">
+    <link rel="stylesheet" href="/css/header_style.css">
+    <link rel="stylesheet" href="/css/footer_style.css">
+    <script src = "/js/burger.js" defer></script>
+</head>
+<body>
+    <div class="messages">
+        <!-- Сообщения об успехе и об ошибке -->
+        {{#if mes}}
+            <div id="server_message">
+                <p>{{mes}}</p>
+            </div>
+        {{/if}}
+        {{#if er}}
+            <div id="server_error">
+                <p>{{er}}</p>
+            </div>
+        {{/if}}
+    </div>
+
+    <main>
+        <!-- Выход -->
+        <form id="account_info" class="text_and_btn" action="/logout" method="post">
+            <p>Администратор: {{username}}</p>
+            <button id="logout_btn" type="submit">Выйти</button>
+        </form>
+
+    <div class="forms_container"><!--3 формы get + 3 таблицы + 3 формы post-->
+
+
+
+
+
+
+
+        <div class="three_forms">
+
+
+            <!-- Добавление -->
+            <form id="save_frm" action="/admin_save_order" method="post">
+                <div class="form_title">
+                    <p>Добавить заказ</p>
+                </div>
+                <div class="inputbox">
+                    <input type="text" name="username" required placeholder="Логин пользователя">
+                </div>
+                <div class="inputbox" >
+                    <input id="product_set_input" type="text" name="str" required placeholder="Растение_Nшт., Другое растение_Mшт.">
+                </div>
+                <button id="save_btn" type="submit">Добавить</button>
+            </form>
+
+
+
+
+            <!-- Удаление заказа-->
+            <form id="delete_order_frm" action="/admin_delete_order" method="post">
+                <div class="form_title">
+                    <p>Удалить заказ по его ID</p>
+                </div>
+                <div class="inputbox">
+                    <input type="text" name="id" required placeholder="ID">
+                </div>
+                <button id="delete_order_btn" type="submit">Удалить</button>
+            </form>
+
+
+
+
+
+            <!-- Удаление пользователя-->
+            <form id="delete_customer_frm" action="/admin_delete_customer" method="post">
+                <div class="form_title">
+                    <p>Удалить пользователя</p>
+                </div>
+                <pre id="login_delete_warning"><b>Внимание</b>: Заказы, привязанные к
+удаляемому пользователю, тоже <b>удалятся</b></pre>
+                <div class="inputbox">
+                    <input type="text" name="username" required placeholder="Логин пользователя">
+                </div>
+                <button id="delete_customer_btn" type="submit">Удалить</button>
+            </form>
+
+
+        </div>
+
+
+        <div class="three_forms">
+            <!-- Поиск всех пользователей -->
+            <form id="find_customers_frm" action="/admin_get_all_customers" method="get">
+                <div class="form_title">
+                    <p>Найти всех пользователей</p>
+                </div>
+                <button id="find_customers_btn" type="submit">Найти</button>
+            </form>
+
+
+            <!-- Поиск всех заказов-->
+            <form id="find_all_orders_frm" action="/admin_get_all_orders" method="get">
+                <div class="form_title">
+                    <p>Найти все заказы</p>
+                </div>
+<!--                <div class="inputbox">-->
+<!--                    <input type="text" name="id" required placeholder="ID">-->
+<!--                </div>-->
+                <button id="find_all_orders_btn" type="submit">Найти</button>
+            </form>
+
+
+
+
+            <!--  Поиск всех заказов пользователя -->
+            <form id="find_orders_frm" action="/admin_get_customer_orders" method="get">
+                <div class="form_title">
+                    <p>Найти заказы пользователя</p>
+                </div>
+                <div class="inputbox">
+                    <input type="text" name="username" required placeholder="Логин пользователя">
+                </div>
+                <button id="find_orders_btn" type="submit">Найти</button>
+            </form>
+        </div>
+
+
+
+        <!--    Таблица формы поиска всех пользователей    -->
+        {{#if customers.length}}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID пользователя</th>
+                    <th>Логин</th>
+                    <th>Хэш пароля</th>
+                    <th>Полное имя</th>
+                    <th>Телефон</th>
+                    <th>Адрес</th>
+                    <th>Роль</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each customers}}
+                    <tr>
+                        <td>{{this._id}}</td>
+                        <td>{{this.username}}</td>
+                        <td>{{this.password}}</td>
+                        <td>{{this.full_name}}</td>
+                        <td>{{this.phone}}</td>
+                        <td>{{this.address}}</td>
+                        <td>{{this.role}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
+
+
+        <!--    Таблица формы поиска всех заказов  -->
+        {{#if all_orders.length}}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID заказа</th>
+                    <th>ID пользователя</th>
+                    <th>Логин </th>
+                    <th>Сумма</th>
+                    <th>Товары</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {{#each all_orders}}
+                    <tr>
+                        <td>{{this._id}}</td>
+                        <td>{{this.customer_id}}</td>
+                        <td>{{this.username}}</td>
+                        <td>{{this.amount}}₽</td>
+                        <td>{{this.product_set}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
+
+
+
+
+
+        <!--    Таблица формы поиска всех заказов пользователя    -->
+        {{#if orders.length}}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID заказа</th>
+                    <th>ID пользователя</th>
+                    <th>Сумма</th>
+                    <th>Товары</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {{#each orders}}
+                    <tr>
+                        <td>{{this._id}}</td>
+                        <td>{{this.customer_id}}</td>
+                        <td>{{this.amount}}₽</td>
+                        <td>{{this.product_set}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{/if}}
+
+
+
+
+
+
+        <!--    Поля заказа, который ищут по ID  -->
+<!--        {{#if found_order}}-->
+<!--            <div class="order">-->
+<!--                <p><strong>ID заказа: </strong><span>{{found_order._id}}</span></p>-->
+<!--                <p><strong>ID пользователя: </strong><span>{{found_order.customer_id}}</span></p>-->
+<!--                <p><strong>Сумма заказа: </strong><span>{{found_order.amount}}₽</span></p>-->
+<!--                <p><strong>Товары: </strong><span>{{found_order.product_set}}</span></p>-->
+<!--            </div>-->
+<!--        {{/if}}-->
+
+
+
+
+    </div>
+
+
+    </main>
+</body>
+

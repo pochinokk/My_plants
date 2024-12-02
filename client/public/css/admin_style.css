@@ -1,0 +1,269 @@
+*{
+    font-family:"Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#account_info{
+    font-size: 22px;
+}
+.inputbox input{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+/* .inputbox{
+    width: 150px;
+} */
+#product_set_input{
+    width: 330px;
+}
+.messages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.messages > *{
+    margin-top: 20px;
+}
+
+main{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 50px 50px 0px 25px;
+    font-size: 20px;
+    padding-bottom: 250px;
+    width: 1400px;
+}
+
+form{
+    margin-bottom: 20px;
+}
+.forms_container{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    gap: 100px;
+    width: 100%;
+}
+.three_forms{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+#server_error, #server_message{
+    position:relative;
+    min-height: 80px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px;
+}
+
+#server_message{
+    display:flex;
+    width: 260px;
+    background: rgba(166, 239, 167, 0.55);
+    border: 3px solid rgb(97, 255, 17);
+}
+
+#server_error{
+    display:flex;
+    flex-direction: column;
+    /* width: 260px; */
+    background: rgba(240, 168, 168, 0.55);
+    border: 3px solid rgba(240, 168, 168);
+    max-width: 260px;
+
+}
+
+#logout_btn,
+#save_btn, 
+#delete_order_btn,
+#delete_customer_btn,
+#find_customers_btn,
+#find_all_orders_btn,
+#find_orders_btn
+{
+    font-weight: 500;
+    border: none;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 35px;
+    width: 85px;
+    line-height: 15px;
+    white-space: nowrap;
+}
+#save_btn,
+#delete_order_btn,
+#delete_customer_btn,
+#find_customers_btn,
+#find_all_orders_btn,
+#find_orders_btn{
+    margin-top: 10px;
+}
+#logout_btn,
+#delete_order_btn,
+#delete_customer_btn{
+    background-color: rgb(207, 19, 19);
+}
+
+#logout_btn:hover,
+#delete_order_btn:hover,
+#delete_customer_btn:hover{
+    background: rgb(255, 0, 0);
+    transform: scale(1.05);
+}
+
+#logout_btn:active,
+#delete_order_btn:active,
+#delete_customer_btn:active{
+    background: rgb(143, 14, 14);
+    transform: scale(0.95);
+}
+
+#save_btn,
+#find_customers_btn,
+#find_all_orders_btn,
+#find_orders_btn
+{
+    background-color: rgb(0, 110, 0);
+}
+
+#save_btn:hover, 
+
+#find_customers_btn:hover,
+#find_all_orders_btn:hover,
+#find_orders_btn:hover{
+    background: rgb(0, 151, 0);
+    transform: scale(1.05);
+}
+#save_btn:active,
+#find_customers_btn:active,
+#find_all_orders_btn:active,
+#find_orders_btn:active{
+    background: rgb(0, 68, 0);
+    transform: scale(0.95);
+}
+#save_btn{
+    width: 110px;
+}
+
+
+
+
+
+
+.text_and_btn{
+    font-weight: 600;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.form_title{
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+#login_delete_warning{
+    font-weight: 400;
+    margin: 10px 0 20px 0;
+}
+
+
+/* Основной стиль для таблицы */
+.table {
+    /*width: 100%;*/
+    border-collapse: collapse;
+    margin: 20px 0;
+    /* font-family: Arial, sans-serif; */
+
+}
+
+/* Оформление заголовков таблицы */
+.table thead {
+    /*background-color: rgb(0, 110, 0);*/
+    background: rgb(230, 255, 182);
+    /*color: white;*/
+    font-size: 18px;
+}
+
+/*!* Стиль для строк *!*/
+/*.table tbody tr:nth-child(odd) {*/
+/*    background-color: #e0e0e0; !*для нечетных строк *!*/
+/*}*/
+
+/*.table tbody tr:nth-child(even) {*/
+/*    background-color: #ffffff; !*для четных строк *!*/
+/*}*/
+
+/* Стиль для ячеек */
+.table td, .table th {
+    padding: 5px;
+    border: 1px solid #b0b0b0;
+    text-align: left;
+    font-size: 18px;
+
+}
+
+
+.table tr{
+    /*font-size: 22px;*/
+}
+/* Добавление стиля для строк при наведении */
+.table tbody tr:hover {
+    background-color: #c0c0c0;
+}
+@media screen and (max-width: 1210px){
+    .three_forms{
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    main{
+        width: 800px;
+    }
+}
+@media screen and (max-width: 1000px){
+    .table th, .table td{
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    .table{
+        width: 950px;
+    }
+}
+@media screen and (max-width: 800px){
+
+    .three_forms{
+        grid-template-columns: 1fr;
+    }
+    main{
+        width: 600px;
+    }
+    .table{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px){
+    main{
+        padding-left: 20px;
+        width: 400px;
+    }
+}
